@@ -23,6 +23,10 @@ This README file describes how to output the video in the "Details About Files I
 
 - I download the simulator of `Term 1, Version 2, Linux` from [simulator repository](https://github.com/udacity/self-driving-car-sim).
 
+### custom datasets
+
+- I referred to this [blog](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) to write custom dataset for this project.
+
 Creating a Great Writeup
 ---
 

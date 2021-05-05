@@ -1,3 +1,5 @@
 .idea
 data
 term1-simulator-linux-v2
+__pycache__
+.ipynb_checkpoints
