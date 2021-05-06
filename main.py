@@ -8,6 +8,7 @@ from util import *
 
 # dataset, transforms and data loader
 transform = transforms.Compose([
+    transforms.CenterCrop((120, 320)),
     transforms.ToTensor(),
 ])
 dataset = BehaviorCloneDataset(csv_file='data/driving_log.csv', root_dir='data', transform=transform)
@@ -19,7 +20,7 @@ model = LeNetRevised().to(device)
 optimizer = optim.Adam(model.parameters(), lr=1e-2)
 loss_fn = nn.MSELoss()
 
-training_loop(n_epochs=10, optimizer=optimizer, model=model, loss_fn=loss_fn, train_loader=train_loader,
+training_loop(n_epochs=15, optimizer=optimizer, model=model, loss_fn=loss_fn, train_loader=train_loader,
               device=device)
 
 torch.save(model.state_dict(), 'checkpoint/model.pth')
