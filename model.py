@@ -9,7 +9,7 @@ class LeNetRevised(nn.Module):
         self.bn1 = nn.BatchNorm2d(num_features=6)
         self.conv2 = nn.Conv2d(6, 16, kernel_size=(5, 5))
         self.bn2 = nn.BatchNorm2d(num_features=16)
-        self.fc1 = nn.Linear(33264, 120)
+        self.fc1 = nn.Linear(20944, 120)
         self.fc2 = nn.Linear(120, 1)
 
     def forward(self, x):

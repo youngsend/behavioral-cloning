@@ -19,13 +19,23 @@ To meet specifications, the project will require submitting five files:
 
 This README file describes how to output the video in the "Details About Files In This Directory" section.
 
+----
+
 ### simulator
 
 - I download the simulator of `Term 1, Version 2, Linux` from [simulator repository](https://github.com/udacity/self-driving-car-sim).
 
+#### problem solved: car not move in autonomous mode 
+
+- I encountered the problem that ego vehicle can not move during autonomous mode, and the problem is conda environment (especially io packages) I've been used. 
+  - I created a new environment with this [yaml file](behav-clone-env.yaml) which I copied from [here](https://knowledge.udacity.com/questions/411931): `conda env create --file behav-clone-env.yaml`. 
+  - and installed torch with `conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch`(because I use PyTorch, and my CUDA version is `10.2.89`), and finally succeeded in making ego vehicle move.
+
+---
+
 ### custom datasets
 
-- I referred to this [blog](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) to write custom dataset for this project.
+- I referred to this [tutorial article](https://pytorch.org/tutorials/beginner/data_loading_tutorial.html) to write custom dataset for this project.
 
 Creating a Great Writeup
 ---

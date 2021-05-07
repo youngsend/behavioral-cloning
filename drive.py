@@ -10,6 +10,7 @@ import eventlet
 import eventlet.wsgi
 import torch
 import torchvision.transforms as transforms
+import torchvision.transforms.functional as T_F
 from PIL import Image
 from flask import Flask
 from io import BytesIO
@@ -21,7 +22,7 @@ app = Flask(__name__)
 model = LeNetRevised()
 prev_image_array = None
 transform = transforms.Compose([
-    transforms.CenterCrop((120, 320)),
+    transforms.Lambda(lambda img: T_F.crop(img, 60, 0, 80, 320)),
     transforms.ToTensor(),
 ])
 
@@ -65,8 +66,8 @@ def telemetry(sid, data):
         imgString = data["image"]
         image = Image.open(BytesIO(base64.b64decode(imgString)))
         # add batch_size dimension.
-        image = transform(image).unsqueeze(0)
-        steering_angle = model(image).item()
+        image_tensor = transform(image).unsqueeze(0)
+        steering_angle = model(image_tensor).item()
 
         throttle = controller.update(float(speed))
 
