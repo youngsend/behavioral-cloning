@@ -3,6 +3,7 @@ import torch
 
 
 class TrainUtil:
+    """Training utility class including train loop and validation loss calculation."""
     def __init__(self, model, device, loss_fn, train_loader, val_loader):
         self.model = model
         self.device = device
